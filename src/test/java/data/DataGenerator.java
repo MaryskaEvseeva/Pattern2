@@ -1,18 +1,24 @@
 package data;
 
+import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import lombok.Value;
-import lombok.val;
-import lombok.var;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static data.DataGenerator.Registration.getRegisteredUser;
+import static data.DataGenerator.Registration.getUser;
 import static io.restassured.RestAssured.given;
-import static jdk.internal.logger.DefaultLoggerFinder.SharedLoggers.system;
+
 
 public class DataGenerator {
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
@@ -73,4 +79,5 @@ public class DataGenerator {
         String password;
         String status;
     }
+
 }
